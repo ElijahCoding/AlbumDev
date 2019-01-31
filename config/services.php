@@ -40,4 +40,8 @@ return [
         ],
     ],
 
+    'authentication' => [
+        'password' => env('USER_PASSWORD')
+    ]
+
 ];
