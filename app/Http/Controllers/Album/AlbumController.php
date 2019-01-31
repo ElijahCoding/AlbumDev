@@ -9,6 +9,6 @@ class AlbumController extends Controller
 {
     public function index()
     {
-
+        return view('album.index');
     }
 }
