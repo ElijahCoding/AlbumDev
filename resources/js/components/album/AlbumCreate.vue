@@ -1,6 +1,6 @@
 <template>
     <form>
-        <div class="row text-center">
+        <div class="row text-center" v-if="show">
             <div class="form-group col-md-3">
                 <h3>Time</h3>
                 <datepicker v-model="album.title"
@@ -49,14 +49,18 @@
             return {
                 album: {
                     title: '',
-                    description: ''
-                }
+                    description: '',
+                },
+                show: true
             }
         },
 
         methods: {
             createAlbum () {
-                console.log(this.album);
+                axios.post('/albums/store', this.album)
+                     .then(response => {
+                         this.show = false
+                     })
             }
         }
     }

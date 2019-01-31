@@ -1813,12 +1813,17 @@ __webpack_require__.r(__webpack_exports__);
       album: {
         title: '',
         description: ''
-      }
+      },
+      show: true
     };
   },
   methods: {
     createAlbum: function createAlbum() {
-      console.log(this.album);
+      var _this = this;
+
+      axios.post('/albums/store', this.album).then(function (response) {
+        _this.show = false;
+      });
     }
   }
 });
@@ -54305,78 +54310,80 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("form", [
-    _c("div", { staticClass: "row text-center" }, [
-      _c(
-        "div",
-        { staticClass: "form-group col-md-3" },
-        [
-          _c("h3", [_vm._v("Time")]),
-          _vm._v(" "),
-          _c("datepicker", {
-            attrs: {
-              "bootstrap-styling": true,
-              "clear-button": true,
-              "calendar-button": true,
-              typeable: true,
-              placeholder: "dd-mm-yyyy"
-            },
-            model: {
-              value: _vm.album.title,
-              callback: function($$v) {
-                _vm.$set(_vm.album, "title", $$v)
-              },
-              expression: "album.title"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group col-md-9 text-center" }, [
-        _c("h3", [_vm._v("Description")]),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.album.description,
-              expression: "album.description"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { name: "name", rows: "8", cols: "80" },
-          domProps: { value: _vm.album.description },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.album, "description", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _vm.album.title
-          ? _c(
-              "button",
-              {
-                staticClass: "btn btn-primary form-control",
-                attrs: { type: "submit" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.createAlbum($event)
-                  }
+    _vm.show
+      ? _c("div", { staticClass: "row text-center" }, [
+          _c(
+            "div",
+            { staticClass: "form-group col-md-3" },
+            [
+              _c("h3", [_vm._v("Time")]),
+              _vm._v(" "),
+              _c("datepicker", {
+                attrs: {
+                  "bootstrap-styling": true,
+                  "clear-button": true,
+                  "calendar-button": true,
+                  typeable: true,
+                  placeholder: "dd-mm-yyyy"
+                },
+                model: {
+                  value: _vm.album.title,
+                  callback: function($$v) {
+                    _vm.$set(_vm.album, "title", $$v)
+                  },
+                  expression: "album.title"
                 }
-              },
-              [_vm._v("\n                      Create\n              ")]
-            )
-          : _vm._e()
-      ])
-    ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-9 text-center" }, [
+            _c("h3", [_vm._v("Description")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.album.description,
+                  expression: "album.description"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "name", rows: "8", cols: "80" },
+              domProps: { value: _vm.album.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.album, "description", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-12" }, [
+            _vm.album.title
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary form-control",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.createAlbum($event)
+                      }
+                    }
+                  },
+                  [_vm._v("\n                      Create\n              ")]
+                )
+              : _vm._e()
+          ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

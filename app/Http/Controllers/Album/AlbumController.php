@@ -19,4 +19,9 @@ class AlbumController extends Controller
     {
         return view('album.create');
     }
+
+    public function store(Request $request)
+    {
+        auth()->user()->albums()->create($request->all());
+    }
 }
