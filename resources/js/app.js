@@ -1,10 +1,9 @@
-
 require('./bootstrap');
 
 window.Vue = require('vue');
 window.moment = require('moment');
 
-Vue.component('albums', require('./components/album/albums.vue').default);
+require('./components.js')
 
 const app = new Vue({
     el: '#app'

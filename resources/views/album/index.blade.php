@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <albums></albums>
+    <album-index></album-index>
 @endsection
