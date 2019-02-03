@@ -14,4 +14,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Album', 'prefix' => 'album
     Route::get('/create', 'AlbumController@create')->name('albums.create');
     Route::post('/store', 'AlbumController@store')->name('albums.store');
 });
+
 Route::get('/', 'HomeController@index')->name('home');
+
+/**
+* Authentication
+*/
+Route::group(['prefix' => 'info', 'namespace' => 'Info'], function () {
+    Route::get('/hacker-news', 'HackerNewsController@index');
+});

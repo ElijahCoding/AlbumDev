@@ -10,20 +10,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                   <a href="#" class="dropdown-toggle nav-link active" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Browse <span class="caret"></span>
-                  </a>
+                @if (auth()->check())
+                    <li class="nav-item dropdown">
+                       <a href="#" class="dropdown-toggle nav-link active" data-toggle="dropdown" role="button" aria-haspopup="true"
+                          aria-expanded="false">Browse <span class="caret"></span>
+                      </a>
 
-                   <ul class="dropdown-menu">
-                       <li class="nav-item">
-                           <a class="nav-link" href="{{ route('albums.index') }}">All Albums</a>
-                       </li>
-                       <li class="nav-item">
-                           <a class="nav-link" href="{{ route('albums.create') }}">Create Album</a>
-                       </li>
-                   </ul>
-               </li>
+                       <ul class="dropdown-menu">
+                           <li class="nav-item">
+                               <a class="nav-link" href="{{ route('albums.index') }}">All Albums</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="{{ route('albums.create') }}">Create Album</a>
+                           </li>
+                       </ul>
+                   </li>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
