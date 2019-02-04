@@ -1991,6 +1991,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     pictures: {
@@ -55382,20 +55402,111 @@ var render = function() {
       "div",
       { staticClass: "row" },
       _vm._l(_vm.pictures, function(picture) {
-        return _c("div", { staticClass: "col-md-3 mt-3" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: picture.file_path, alt: picture.name }
-            })
-          ])
-        ])
+        return _c(
+          "div",
+          {
+            staticClass: "col-md-3 mt-3",
+            attrs: {
+              "data-toggle": "modal",
+              "data-target": "#picture-" + picture.id
+            }
+          },
+          [
+            _c("div", { staticClass: "card" }, [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: { src: picture.file_path, alt: picture.name }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: {
+                  id: "picture-" + picture.id,
+                  tabindex: "-1",
+                  role: "dialog",
+                  "aria-labelledby": "exampleModalLabel",
+                  "aria-hidden": "true"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "modal-dialog", attrs: { role: "document" } },
+                  [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-header" }, [
+                        _c(
+                          "h5",
+                          {
+                            staticClass: "modal-title",
+                            attrs: { id: "picture-" + picture.id }
+                          },
+                          [_vm._v(_vm._s(picture.name))]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(0, true)
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _vm._v("\n                    ...\n                  ")
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(1, true)
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]
+        )
       }),
       0
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "button" } },
+        [_vm._v("Save changes")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
