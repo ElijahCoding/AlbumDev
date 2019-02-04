@@ -34,13 +34,14 @@
         </div>
 
         <div class="row text-center" v-if="!show">
-            <!-- <div class="col-md-12">
-                <button class="btn btn-success form-control" @click.prevent="upload">Process</button>
-            </div> -->
+            <div class="col-md-12">
+                <button class="btn btn-success form-control" @click.prevent="process">Process</button>
+            </div>
             <div class="col-md-12 mt-5">
                 <vue-dropzone ref="myVueDropzone"
                               id="dropzone"
                               :options="dropzoneOptions"
+                              @vdropzone-success="loaded"
                               >
                 </vue-dropzone>
             </div>
@@ -70,9 +71,8 @@
 
                 dropzoneOptions: {
                   url: '',
-                  // autoProcessQueue: false,
                   paramName: 'uploadedFile',
-                  thumbnailWidth: 50,
+                  thumbnailWidth: 100,
                   maxFilesize: 30,
                   headers: {
                       'X-CSRF-Token': window.App.csrfToken
@@ -92,9 +92,11 @@
                 })
             },
 
-            // upload () {
-            //     this.$refs.myVueDropzone.processQueue()
-            // }
+            loaded () {
+                if (this.$refs.myVueDropzone.getQueuedFiles().length === 0) {
+                    this.show = true
+                }
+            }
         }
     }
 </script>

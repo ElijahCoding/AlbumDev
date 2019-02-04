@@ -9,25 +9,23 @@ use App\Http\Controllers\Controller;
 
 class PictureController extends Controller
 {
-    // protected $allowedImageExtensions = ['gif', 'jpg', 'jpeg', 'png', 'flv', 'pjpeg'];
+    protected $allowedImageExtensions = ['gif', 'jpg', 'jpeg', 'png', 'flv', 'pjpeg'];
 
     public function store(Album $album, Request $request)
     {
-        dd('working');
-        // if ($request->hasFile('uploadedFile')) {
-        //     if (in_array($request->file('uploadedFile')->getClientOriginalExtension(), $this->allowedImageExtensions)) {
-        //         Storage::putFileAs(
-        //             "/public/{$album->title}/",
-        //             $request->file('uploadedFile'),
-        //             $fileName = $request->file('uploadedFile')->getClientOriginalName()
-        //         );
-        //
-        //         // $album->pictures()->create([
-        //         //     'name' => ,
-        //         //     'file_path' =>
-        //         // ]);
-        //     }
-        // }
-        // $album->pictures()->create();
+        if ($request->hasFile('uploadedFile')) {
+            if (in_array($request->file('uploadedFile')->getClientOriginalExtension(), $this->allowedImageExtensions)) {
+                Storage::putFileAs(
+                    "/public/{$album->title}/",
+                    $request->file('uploadedFile'),
+                    $fileName = $request->file('uploadedFile')->getClientOriginalName()
+                );
+
+                return $album->pictures()->create([
+                    'name' => $fileName,
+                    'file_path' => "/storage/{$album->title}/$fileName"
+                ]);
+            }
+        }
     }
 }

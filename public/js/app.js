@@ -1900,6 +1900,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1917,9 +1918,8 @@ __webpack_require__.r(__webpack_exports__);
       show: true,
       dropzoneOptions: {
         url: '',
-        // autoProcessQueue: false,
         paramName: 'uploadedFile',
-        thumbnailWidth: 50,
+        thumbnailWidth: 100,
         maxFilesize: 30,
         headers: {
           'X-CSRF-Token': window.App.csrfToken
@@ -1938,6 +1938,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.show = false;
         _this.dropzoneOptions.url = "/albums/".concat(response.data.id, "/pictures/store");
       });
+    },
+    loaded: function loaded() {
+      if (this.$refs.myVueDropzone.getQueuedFiles().length === 0) {
+        this.show = true;
+      }
     }
   }
 });
@@ -55214,13 +55219,30 @@ var render = function() {
     _vm._v(" "),
     !_vm.show
       ? _c("div", { staticClass: "row text-center" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success form-control",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.process($event)
+                  }
+                }
+              },
+              [_vm._v("Process")]
+            )
+          ]),
+          _vm._v(" "),
           _c(
             "div",
             { staticClass: "col-md-12 mt-5" },
             [
               _c("vue-dropzone", {
                 ref: "myVueDropzone",
-                attrs: { id: "dropzone", options: _vm.dropzoneOptions }
+                attrs: { id: "dropzone", options: _vm.dropzoneOptions },
+                on: { "vdropzone-success": _vm.loaded }
               })
             ],
             1
