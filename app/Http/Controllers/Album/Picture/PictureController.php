@@ -10,6 +10,6 @@ class PictureController extends Controller
 {
     public function store(Album $album, Request $request)
     {
-
+        
     }
 }

@@ -1878,12 +1878,9 @@ __webpack_require__.r(__webpack_exports__);
       },
       show: true,
       dropzoneOptions: {
-        url: 'https://httpbin.org/post',
-        thumbnailWidth: 150,
-        maxFilesize: 30,
-        headers: {
-          "My-Awesome-Header": "header value"
-        }
+        url: '',
+        thumbnailWidth: 100,
+        maxFilesize: 30
       }
     };
   },
@@ -1893,6 +1890,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/albums/store', this.album).then(function (response) {
         _this.show = false;
+        _this.dropzoneOptions.url = "/albums/".concat(response.data.id, "/pictures/store");
       });
     }
   }

@@ -66,10 +66,9 @@
                 show: true,
 
                 dropzoneOptions: {
-                  url: 'https://httpbin.org/post',
-                  thumbnailWidth: 150,
+                  url: '',
+                  thumbnailWidth: 100,
                   maxFilesize: 30,
-                  headers: { "My-Awesome-Header": "header value" }
               }
             }
         },
@@ -79,6 +78,7 @@
                 axios.post('/albums/store', this.album)
                      .then(response => {
                          this.show = false
+                         this.dropzoneOptions.url = `/albums/${response.data.id}/pictures/store`
                      })
             }
         }
