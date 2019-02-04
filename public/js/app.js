@@ -1785,12 +1785,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    albums: {
+      required: true,
+      type: Array
+    }
+  },
   data: function data() {
     return {
       show: true
     };
+  },
+  created: function created() {
+    console.log(this.albums);
   },
   components: {
     AlbumCreate: _partials_AlbumCreate__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -1862,6 +1874,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -1879,7 +1894,9 @@ __webpack_require__.r(__webpack_exports__);
       show: true,
       dropzoneOptions: {
         url: '',
-        thumbnailWidth: 100,
+        // autoProcessQueue: false,
+        paramName: 'uploadedFile',
+        thumbnailWidth: 50,
         maxFilesize: 30
       }
     };
@@ -1888,7 +1905,10 @@ __webpack_require__.r(__webpack_exports__);
     createAlbum: function createAlbum() {
       var _this = this;
 
-      axios.post('/albums/store', this.album).then(function (response) {
+      axios.post('/albums/store', {
+        'title': moment(this.album.title).format('YYYY-MM-DD'),
+        'description': this.album.description
+      }).then(function (response) {
         _this.show = false;
         _this.dropzoneOptions.url = "/albums/".concat(response.data.id, "/pictures/store");
       });
@@ -54975,26 +54995,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("album-create"), _vm._v(" "), _vm._m(0)], 1)
+  return _c(
+    "div",
+    [
+      _c("album-create"),
+      _vm._v(" "),
+      _vm._l(_vm.albums, function(album) {
+        return _vm.albums.length
+          ? _c("div", { key: album.id, staticClass: "container mt-5" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _c("strong", {
+                        domProps: { textContent: _vm._s(album.title) }
+                      }),
+                      _vm._v(" "),
+                      _c("p", {
+                        staticClass: "float-right",
+                        domProps: { textContent: _vm._s(album.description) }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" })
+                  ])
+                ])
+              ])
+            ])
+          : _vm._e()
+      })
+    ],
+    2
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container mt-5" }, [
-      _c("div", { staticClass: "row text-center" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Dashboard")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" })
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -55099,7 +55133,7 @@ var render = function() {
       ? _c("div", { staticClass: "row text-center" }, [
           _c(
             "div",
-            { staticClass: "col-md-12" },
+            { staticClass: "col-md-12 mt-5" },
             [
               _c("vue-dropzone", {
                 ref: "myVueDropzone",

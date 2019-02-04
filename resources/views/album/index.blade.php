@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <album-index></album-index>
+    <album-index :albums="{{ $albums }}"></album-index>
 @endsection

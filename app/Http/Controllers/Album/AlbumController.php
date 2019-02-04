@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Album;
 
+use Storage;
 use App\Models\Album\Album;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,13 +11,18 @@ class AlbumController extends Controller
 {
     public function index()
     {
-        $albums = Album::get();
-
-        return view('album.index');
+        return view('album.index', [
+            'albums' => Album::get()
+        ]);
     }
 
     public function store(Request $request)
     {
         return auth()->user()->albums()->create($request->all());
+    }
+
+    public function destroy(Album $album)
+    {
+        $album->delete();
     }
 }

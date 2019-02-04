@@ -9,6 +9,8 @@ class Album extends Model
 {
     protected $guarded = [];
 
+    protected $with = ['pictures'];
+
     public function pictures()
     {
         return $this->hasMany(Picture::class);

@@ -16,6 +16,7 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['middleware' => 'auth', 'namespace' => 'Album', 'prefix' => 'albums'], function () {
     Route::get('/', 'AlbumController@index')->name('albums.index');
     Route::post('/store', 'AlbumController@store')->name('albums.store');
+    Route::delete('/{album}/destroy', 'AlbumController@destroy')->name('albums.delete');
 
     /**
     * Pictures

@@ -34,7 +34,10 @@
         </div>
 
         <div class="row text-center" v-if="!show">
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
+                <button class="btn btn-success form-control" @click.prevent="upload">Process</button>
+            </div> -->
+            <div class="col-md-12 mt-5">
                 <vue-dropzone ref="myVueDropzone"
                               id="dropzone"
                               :options="dropzoneOptions"
@@ -67,7 +70,9 @@
 
                 dropzoneOptions: {
                   url: '',
-                  thumbnailWidth: 100,
+                  // autoProcessQueue: false,
+                  paramName: 'uploadedFile',
+                  thumbnailWidth: 50,
                   maxFilesize: 30,
               }
             }
@@ -75,12 +80,18 @@
 
         methods: {
             createAlbum () {
-                axios.post('/albums/store', this.album)
-                     .then(response => {
-                         this.show = false
-                         this.dropzoneOptions.url = `/albums/${response.data.id}/pictures/store`
-                     })
-            }
+                axios.post('/albums/store', {
+                    'title': moment(this.album.title).format('YYYY-MM-DD'),
+                    'description': this.album.description
+                }).then(response => {
+                    this.show = false
+                    this.dropzoneOptions.url = `/albums/${response.data.id}/pictures/store`
+                })
+            },
+
+            // upload () {
+            //     this.$refs.myVueDropzone.processQueue()
+            // }
         }
     }
 </script>
