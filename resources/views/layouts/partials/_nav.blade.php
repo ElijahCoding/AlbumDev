@@ -10,7 +10,7 @@
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                    <a class="dropdown-item" href="{{ route('albums.index') }}">Album</a>
-                   <a class="dropdown-item" href="{{ route('info.index') }}">Info</a>
+                   <a class="dropdown-item" href="{{ route('hackernews.index') }}">Info</a>
                </div>
             </div>
         @endguest

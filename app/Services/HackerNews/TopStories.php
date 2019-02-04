@@ -4,6 +4,7 @@ namespace App\Services\HackerNews;
 
 use Cache;
 use App\Services\ServiceAbstract;
+use App\Services\Transformers\HackerNewsTransformer;
 
 class TopStories extends ServiceAbstract
 {
@@ -20,7 +21,6 @@ class TopStories extends ServiceAbstract
                 $this->client->request('GET', 'https://hacker-news.firebaseio.com/v0/item/' . $id . '.json')->getBody()
             );
         }
-
-        return $stories;
+        return (new HackerNewsTransformer($stories))->create();
     }
 }

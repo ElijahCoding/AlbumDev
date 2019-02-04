@@ -6,13 +6,15 @@
             @include('info.partials._nav')
         </div>
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">Hacker News</div>
+            @foreach ($stories as $story)
+                <div class="card">
+                    <div class="card-header text-center">Hacker News</div>
 
-                <div class="card-body">
-                    
+                    <div class="card-body">
+
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

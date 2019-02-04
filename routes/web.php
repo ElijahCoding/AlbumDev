@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return redirect()->route('info.index');
+    return redirect()->route('hackernews.index');
 });
 
 /**
@@ -23,6 +23,5 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Album', 'prefix' => 'album
 * Authentication
 */
 Route::group(['prefix' => 'info', 'namespace' => 'Info', 'middleware' => 'auth'], function () {
-    Route::get('/', 'InfoController@index')->name('info.index');
     Route::get('/hacker-news', 'HackerNewsController@index')->name('hackernews.index');
 });
