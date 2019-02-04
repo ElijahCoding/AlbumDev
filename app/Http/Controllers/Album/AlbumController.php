@@ -17,6 +17,6 @@ class AlbumController extends Controller
 
     public function store(Request $request)
     {
-        auth()->user()->albums()->create($request->all());
+        return auth()->user()->albums()->create($request->all());
     }
 }

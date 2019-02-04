@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <div class="container">
         <div class="row text-center" v-if="show">
             <div class="form-group col-md-3">
                 <h3>Time</h3>
@@ -24,7 +24,7 @@
 
             <div class="col-md-12">
                 <button type="submit"
-                        class="btn btn-primary form-control"
+                        class="btn btn-success form-control"
                         v-if="album.title"
                         @click.prevent="createAlbum"
                         >
@@ -33,15 +33,28 @@
             </div>
         </div>
 
-  </form>
+        <div class="row text-center" v-if="!show">
+            <div class="col-md-12">
+                <vue-dropzone ref="myVueDropzone"
+                              id="dropzone"
+                              :options="dropzoneOptions"
+                              >
+                </vue-dropzone>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
     import Datepicker from 'vuejs-datepicker'
+    import vue2Dropzone from 'vue2-dropzone'
+    import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 
     export default {
         components: {
-            Datepicker
+            Datepicker,
+            vueDropzone: vue2Dropzone
         },
 
         data () {
@@ -50,7 +63,14 @@
                     title: '',
                     description: '',
                 },
-                show: true
+                show: true,
+
+                dropzoneOptions: {
+                  url: 'https://httpbin.org/post',
+                  thumbnailWidth: 150,
+                  maxFilesize: 30,
+                  headers: { "My-Awesome-Header": "header value" }
+              }
             }
         },
 
