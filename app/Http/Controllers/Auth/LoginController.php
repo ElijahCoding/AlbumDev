@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/info';
+    protected $redirectTo = '/albums';
 
     public function __construct()
     {
