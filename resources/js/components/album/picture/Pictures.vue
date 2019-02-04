@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="row">
-            <div class="col-md-3 mt-3" v-for="picture in pictures" data-toggle="modal" :data-target="'#picture-' + picture.id">
+            <div class="col-md-3 mt-2" v-for="picture in pictures" data-toggle="modal" :data-target="'#picture-' + picture.id">
                 <div class="card">
                     <img class="card-img-top"
                          :src="picture.file_path"
@@ -19,7 +19,13 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        ...
+                          <div class="container">
+                              <div class="row">
+                                  <img :src="picture.file_path"
+                                       :alt="picture.name"
+                                       >
+                              </div>
+                          </div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

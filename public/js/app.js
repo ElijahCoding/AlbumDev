@@ -2011,6 +2011,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     pictures: {
@@ -55405,7 +55411,7 @@ var render = function() {
         return _c(
           "div",
           {
-            staticClass: "col-md-3 mt-3",
+            staticClass: "col-md-3 mt-2",
             attrs: {
               "data-toggle": "modal",
               "data-target": "#picture-" + picture.id
@@ -55451,7 +55457,16 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-body" }, [
-                        _vm._v("\n                    ...\n                  ")
+                        _c("div", { staticClass: "container" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("img", {
+                              attrs: {
+                                src: picture.file_path,
+                                alt: picture.name
+                              }
+                            })
+                          ])
+                        ])
                       ]),
                       _vm._v(" "),
                       _vm._m(1, true)
