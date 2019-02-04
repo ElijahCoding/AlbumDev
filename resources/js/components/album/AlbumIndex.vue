@@ -12,18 +12,14 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    1
-                                </div>
-                                <div class="col-md-3">
-                                    2
-                                </div>
-                                <div class="col-md-3">
-                                    3
-                                </div>
-                                <div class="col-md-3">
-                                    4
+                            <div class="row" v-if="album.pictures.length">
+                                <div class="col-md-3" v-for="picture in album.pictures">
+                                    <div class="card">
+                                        <img class="card-img-top"
+                                             :src="picture.file_path"
+                                             :alt="picture.name"
+                                             >
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -58,20 +54,18 @@
         data () {
             return {
                 show: true,
-                moment
+                moment,
             }
-        },
-
-        created () {
-            console.log(this.albums);
         },
 
         components: {
             AlbumCreate
-        },
-
-        methods: {
-
         }
     }
 </script>
+
+<style scoped>
+    .card {
+        border: none;
+    }
+</style>

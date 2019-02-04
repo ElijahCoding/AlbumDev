@@ -94,7 +94,7 @@
 
             loaded () {
                 if (this.$refs.myVueDropzone.getQueuedFiles().length === 0) {
-                    this.show = true
+                    window.location.reload(true)
                 }
             }
         }
