@@ -2,9 +2,12 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-4">
+            @include('info.partials._nav')
+        </div>
+        <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Hacker News</div>
+                <div class="card-header text-center">Hacker News</div>
 
                 <div class="card-body">
                     
