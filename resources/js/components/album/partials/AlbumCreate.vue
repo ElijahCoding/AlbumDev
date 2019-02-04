@@ -15,12 +15,11 @@
 
             <div class="form-group col-md-9 text-center">
               <h3>Description</h3>
-              <textarea class="form-control"
-                        name="name"
-                        rows="8"
-                        cols="80"
-                        v-model="album.description"
-                        ></textarea>
+              <input type="text"
+                     class="form-control"
+                     placeholder="Some description about this folder"
+                     v-model="album.description"
+                     >
             </div>
 
             <div class="col-md-12">

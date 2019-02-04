@@ -15,7 +15,6 @@ Route::group(['namespace' => 'Auth'], function () {
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Album', 'prefix' => 'albums'], function () {
     Route::get('/', 'AlbumController@index')->name('albums.index');
-    Route::get('/create', 'AlbumController@create')->name('albums.create');
     Route::post('/store', 'AlbumController@store')->name('albums.store');
 });
 

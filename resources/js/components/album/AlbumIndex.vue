@@ -1,9 +1,15 @@
 <template>
-    <p>indexc</p>
+    <div>
+        <album-create></album-create>
+    </div>
 </template>
 
 <script>
-    export default {
+    import AlbumCreate from './partials/AlbumCreate'
 
+    export default {
+        components: {
+            AlbumCreate
+        }
     }
 </script>
