@@ -15,5 +15,5 @@ abstract class ServiceAbstract
         ]);
     }
 
-    abstract public function get();
+    abstract public function get($limit = 20);
 }

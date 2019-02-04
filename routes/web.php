@@ -1,5 +1,9 @@
 <?php
 
+Route::get('/', function () {
+    return redirect()->route('info.index');
+});
+
 /**
 * Authentication
 */
@@ -15,11 +19,10 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Album', 'prefix' => 'album
     Route::post('/store', 'AlbumController@store')->name('albums.store');
 });
 
-Route::get('/', 'HomeController@index')->name('home');
-
 /**
 * Authentication
 */
-Route::group(['prefix' => 'info', 'namespace' => 'Info'], function () {
+Route::group(['prefix' => 'info', 'namespace' => 'Info', 'middleware' => 'auth'], function () {
+    Route::get('/', 'InfoController@index')->name('info.index');
     Route::get('/hacker-news', 'HackerNewsController@index');
 });

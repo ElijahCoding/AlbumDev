@@ -1,31 +1,25 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
-        <a class="navbar-brand dropdown" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        @guest
+            <a href="/">Home</a>
+        @else
+            <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Browse
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                   <a class="dropdown-item" href="{{ route('albums.index') }}">Album</a>
+                   <a class="dropdown-item" href="{{ route('info.index') }}">Info</a>
+               </div>
+            </div>
+        @endguest
+
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                @if (auth()->check())
-                    <li class="nav-item dropdown">
-                       <a href="#" class="dropdown-toggle nav-link active" data-toggle="dropdown" role="button" aria-haspopup="true"
-                          aria-expanded="false">Browse <span class="caret"></span>
-                      </a>
 
-                       <ul class="dropdown-menu">
-                           <li class="nav-item">
-                               <a class="nav-link" href="{{ route('albums.index') }}">All Albums</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="nav-link" href="{{ route('albums.create') }}">Create Album</a>
-                           </li>
-                       </ul>
-                   </li>
-                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
