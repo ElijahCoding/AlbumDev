@@ -28,7 +28,7 @@
                         v-if="album.title"
                         @click.prevent="createAlbum"
                         >
-                        Create
+                        Create Folder
                 </button>
             </div>
         </div>
@@ -64,7 +64,7 @@
         data () {
             return {
                 album: {
-                    title: '',
+                    title: new Date(),
                     description: '',
                 },
                 show: true,

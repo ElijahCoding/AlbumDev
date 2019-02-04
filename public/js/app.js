@@ -1912,7 +1912,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       album: {
-        title: '',
+        title: new Date(),
         description: ''
       },
       show: true,
@@ -55210,7 +55210,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("\n                    Create\n            ")]
+                  [_vm._v("\n                    Create Folder\n            ")]
                 )
               : _vm._e()
           ])
