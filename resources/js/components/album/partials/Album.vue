@@ -7,18 +7,7 @@
                     <span class="float-right" v-text="album.description"></span>
                 </div>
 
-                <div class="card-body">
-                    <div class="row" v-if="album.pictures.length">
-                        <div class="col-md-3" v-for="picture in album.pictures">
-                            <div class="card">
-                                <img class="card-img-top"
-                                     :src="picture.file_path"
-                                     :alt="picture.name"
-                                     >
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <pictures  v-if="album.pictures.length" :pictures="album.pictures"></pictures>
 
                 <div class="card-footer text-muted">
                     <strong>
@@ -34,12 +23,17 @@
 </template>
 
 <script>
+    import Pictures from '../picture/Pictures'
     export default {
         props: {
             album: {
                 required: true,
                 type: Object
             }
+        },
+
+        components: {
+            Pictures
         },
 
         data () {
