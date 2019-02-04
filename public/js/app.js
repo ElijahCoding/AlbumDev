@@ -1788,6 +1788,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -1798,7 +1820,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      show: true
+      show: true,
+      moment: moment
     };
   },
   created: function created() {
@@ -1897,7 +1920,10 @@ __webpack_require__.r(__webpack_exports__);
         // autoProcessQueue: false,
         paramName: 'uploadedFile',
         thumbnailWidth: 50,
-        maxFilesize: 30
+        maxFilesize: 30,
+        headers: {
+          'X-CSRF-Token': window.App.csrfToken
+        }
       }
     };
   },
@@ -55011,13 +55037,29 @@ var render = function() {
                         domProps: { textContent: _vm._s(album.title) }
                       }),
                       _vm._v(" "),
-                      _c("p", {
+                      _c("span", {
                         staticClass: "float-right",
                         domProps: { textContent: _vm._s(album.description) }
                       })
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card-body" })
+                    _vm._m(0, true),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-footer text-muted" }, [
+                      _c("strong", [
+                        _vm._v(
+                          "\n                            Created at " +
+                            _vm._s(
+                              _vm.moment(album.created_at).format("YYYY-MM-DD")
+                            ) +
+                            " ( " +
+                            _vm._s(_vm.moment(album.created_at).fromNow()) +
+                            " )\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(1, true)
+                    ])
                   ])
                 ])
               ])
@@ -55028,7 +55070,48 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-3" }, [
+          _vm._v(
+            "\n                                1\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _vm._v(
+            "\n                                2\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _vm._v(
+            "\n                                3\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _vm._v(
+            "\n                                4\n                            "
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "btn btn-link" }, [_vm._v("Delete")])
+    ])
+  }
+]
 render._withStripped = true
 
 

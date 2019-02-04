@@ -74,6 +74,9 @@
                   paramName: 'uploadedFile',
                   thumbnailWidth: 50,
                   maxFilesize: 30,
+                  headers: {
+                      'X-CSRF-Token': window.App.csrfToken
+                  }
               }
             }
         },

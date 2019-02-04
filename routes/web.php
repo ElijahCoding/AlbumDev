@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Album', 'prefix' => 'album
     * Pictures
     */
     Route::group(['namespace' => 'Picture'], function () {
-        Route::post('/{album}/pictures/store', 'PictureController@store')->name('picture.store');
+        Route::post('/{album}/pictures/store', 'PictureController@store');
     });
 });
 

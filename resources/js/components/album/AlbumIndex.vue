@@ -8,11 +8,33 @@
                     <div class="card">
                         <div class="card-header">
                             <strong v-text="album.title"></strong>
-                            <p class="float-right" v-text="album.description"></p>
+                            <span class="float-right" v-text="album.description"></span>
                         </div>
 
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    1
+                                </div>
+                                <div class="col-md-3">
+                                    2
+                                </div>
+                                <div class="col-md-3">
+                                    3
+                                </div>
+                                <div class="col-md-3">
+                                    4
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="card-footer text-muted">
+                            <strong>
+                                Created at {{ moment(album.created_at).format('YYYY-MM-DD') }} ( {{ moment(album.created_at).fromNow() }} )
+                            </strong>
+                            <span class="float-right">
+                                <button class="btn btn-link">Delete</button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -35,7 +57,8 @@
 
         data () {
             return {
-                show: true
+                show: true,
+                moment
             }
         },
 
