@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-4">
-            nav
+            @include('info.partials._nav')
         </div>
         <div class="col-md-8">
             <div class="card">
