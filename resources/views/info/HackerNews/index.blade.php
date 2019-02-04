@@ -20,7 +20,7 @@
                             </strong>
                         </h5>
                         <br>
-                        <a target="_blank" href="{{ $story->link }}" class="btn btn-link">Check it</a>
+                        <a target="_blank" href="{{ $story->link }}" class="btn btn-dark float-right">Check it</a>
                       </div>
                     </div>
                   </div>
