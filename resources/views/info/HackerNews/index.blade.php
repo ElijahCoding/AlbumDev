@@ -15,9 +15,6 @@
                             <strong>
                                 {{ strlen($story->title) > 65 ? substr($story->title, 0, 65) . '...' : $story->title }}
                             </strong>
-                            <strong class="float-right">
-                                {{ $story->timestamp }}
-                            </strong>
                         </h5>
                         <br>
                         <a target="_blank" href="{{ $story->link }}" class="btn btn-dark float-right">Check it</a>
