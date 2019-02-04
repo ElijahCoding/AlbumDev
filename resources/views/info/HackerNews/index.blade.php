@@ -7,13 +7,25 @@
         </div>
         <div class="col-md-8">
             @foreach ($stories as $story)
-                <div class="card">
-                    <div class="card-header text-center">Hacker News</div>
-
-                    <div class="card-body">
-
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                            <strong>
+                                {{ strlen($story->title) > 65 ? substr($story->title, 0, 65) . '...' : $story->title }}
+                            </strong>
+                            <strong class="float-right">
+                                {{ $story->timestamp }}
+                            </strong>
+                        </h5>
+                        <br>
+                        <a target="_blank" href="{{ $story->link }}" class="btn btn-link">Check it</a>
+                      </div>
                     </div>
-                </div>
+                  </div>
+              </div>
+              <br>
             @endforeach
         </div>
     </div>

@@ -11,7 +11,7 @@ class HackerNewsTransformer extends TransformerAbstract
       return [
              'title' => $payload->title,
              'link' => isset($payload->url) ? $payload->url : 'https://news.ycombinator.com/item?id=' . $payload->id,
-             'timestamp' => $payload->time,
+             'timestamp' => gmdate("Y-m-d", $payload->time),
              'service' => 'Hacker News'
          ];
     }
