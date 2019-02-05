@@ -3,6 +3,7 @@
 namespace App\Services\Reddit;
 
 use App\Services\ServiceAbstract;
+use App\Services\Transformers\RedditTransformer;
 
 class Stories extends ServiceAbstract
 {
@@ -12,6 +13,6 @@ class Stories extends ServiceAbstract
             'headers' => ['User-Agent' => 'Distract']
         ]);
 
-        return json_decode($response->getBody())->data->children;
+        return (new RedditTransformer(json_decode($response->getBody())->data->children))->create();
     }
 }

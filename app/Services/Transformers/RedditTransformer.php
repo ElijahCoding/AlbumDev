@@ -11,7 +11,7 @@ class RedditTransformer extends TransformerAbstract
         return [
             'title' => $payload->data->title,
             'link' => 'https://reddit.com' . $payload->data->permalink,
-            'timestamp' => $payload->data->created_utc
+            'timestamp' => gmdate("Y-m-d", $payload->data->created_utc)
         ];
     }
 }
