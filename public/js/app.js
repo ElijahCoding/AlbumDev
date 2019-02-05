@@ -1996,6 +1996,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     pictures: {
@@ -2003,9 +2019,17 @@ __webpack_require__.r(__webpack_exports__);
       type: Array
     }
   },
+  data: function data() {
+    return {
+      moment: moment
+    };
+  },
   methods: {
     showModal: function showModal(id) {
       this.$modal.show("picture-".concat(id));
+    },
+    hideModal: function hideModal(id) {
+      this.$modal.hide("picture-".concat(id));
     }
   }
 });
@@ -55425,9 +55449,46 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c("modal", { attrs: { name: "picture-" + picture.id } }, [
-              _c("p", [_vm._v(_vm._s(picture.name))])
-            ])
+            _c(
+              "modal",
+              {
+                attrs: {
+                  name: "picture-" + picture.id,
+                  height: "auto",
+                  scrollable: "true",
+                  adaptive: true
+                }
+              },
+              [
+                _c("div", { staticClass: "card" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: picture.file_path, alt: "Card image cap" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-footer text-muted" }, [
+                  _c("strong", [
+                    _vm._v(
+                      "\n                           " +
+                        _vm._s(
+                          _vm.moment(picture.created_at).format("YYYY-MM-DD")
+                        ) +
+                        "\n                           "
+                    ),
+                    _c("button", { staticClass: "btn btn-primary" }, [
+                      _vm._v("Download")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "float-right" }, [
+                    _c("button", { staticClass: "btn btn-danger" }, [
+                      _vm._v("Delete")
+                    ])
+                  ])
+                ])
+              ]
+            )
           ],
           1
         )

@@ -9,8 +9,24 @@
                          >
                 </div>
 
-                <modal :name="'picture-' + picture.id">
-                    <p>{{ picture.name }}</p>
+                <modal :name="'picture-' + picture.id"
+                        height="auto"
+                        scrollable="true"
+                        :adaptive="true"
+                       >
+                       <div class="card">
+                           <img class="card-img-top" :src="picture.file_path" alt="Card image cap">
+                       </div>
+
+                       <div class="card-footer text-muted">
+                           <strong>
+                               {{ moment(picture.created_at).format('YYYY-MM-DD') }}
+                               <button class="btn btn-primary">Download</button>
+                           </strong>
+                           <span class="float-right">
+                               <button class="btn btn-danger">Delete</button>
+                           </span>
+                       </div>
                 </modal>
 
             </div>
@@ -28,9 +44,19 @@
             }
         },
 
+        data () {
+            return {
+                moment
+            }
+        },
+
         methods: {
             showModal (id) {
-                this.$modal.show(`picture-${id}`);
+                this.$modal.show(`picture-${id}`)
+            },
+
+            hideModal (id) {
+                this.$modal.hide(`picture-${id}`)
             }
         }
     }
