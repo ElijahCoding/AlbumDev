@@ -11,6 +11,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                    <a class="dropdown-item {{ return_if(on_page('albums'), 'active') }}" href="{{ route('albums.index') }}">Album</a>
                    <a class="dropdown-item {{ return_if(on_page('info/*'), 'active') }}" href="{{ route('hackernews.index') }}">Info</a>
+                   <a class="dropdown-item {{ return_if(on_page('programming/cdn'), 'active') }}" href="{{ route('cdn.index') }}">CDN</a>
                </div>
             </div>
         @endguest

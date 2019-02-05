@@ -2049,7 +2049,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['libraries'],
+  mounted: function mounted() {
+    console.log(this.libraries);
+  }
+});
 
 /***/ }),
 
@@ -70172,7 +70177,7 @@ window.axios.defaults.headers.common = {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('albums', __webpack_require__(/*! ./components/album/Albums.vue */ "./resources/js/components/album/Albums.vue").default);
-Vue.component('libraries', __webpack_require__(/*! ./components/programming/cdn/Libraries.vue */ "./resources/js/components/programming/cdn/Libraries.vue").default);
+Vue.component('app-libraries', __webpack_require__(/*! ./components/programming/cdn/Libraries.vue */ "./resources/js/components/programming/cdn/Libraries.vue").default);
 
 /***/ }),
 
