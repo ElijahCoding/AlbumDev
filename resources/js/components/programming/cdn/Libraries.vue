@@ -10,17 +10,24 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" v-if="links.length">
             <div class="col-lg-12">
 
-                <div class="card mt-3">
+                <div class="card mt-3" v-for="library in filteredLibraries" :key="library.id">
                    <div class="card-header">
-                     Featured
+                       <strong>{{ library.name }}</strong>
                    </div>
                    <div class="card-body">
-                     <h5 class="card-title">Special title treatment</h5>
-                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                     <a href="#" class="btn btn-primary">Go somewhere</a>
+                     <h4 class="card-title">
+                         {{ library.link }}
+                     </h4>
+                     <h5 class="card-text mt-1">
+                         <a href="#">Copy</a> &nbsp; <a href="#">Copy HTML</a>
+                     </h5>
+
+                     <a href="#" class="btn btn-primary mt-1">
+                         Go somewhere
+                     </a>
                    </div>
                </div>
 
@@ -36,7 +43,7 @@
         data () {
             return {
                 links: [],
-                query: null
+                query: ''
             }
         },
 
@@ -55,7 +62,21 @@
 
         computed: {
             filteredLibraries () {
-                
+                let data = this.links
+
+                data = data.filter(row => {
+                  return Object.keys(row).some(key => {
+                      if (key === 'name') {
+                          return (
+                            String(row[key])
+                              .toLowerCase()
+                              .indexOf(this.query.toLowerCase()) > -1
+                          )
+                      }
+                  })
+              }).slice(0, 100)
+
+                return data;
             }
         }
     }

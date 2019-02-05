@@ -2076,12 +2076,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['libraries'],
   data: function data() {
     return {
       links: [],
-      query: null
+      query: ''
     };
   },
   created: function created() {
@@ -2097,7 +2104,19 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   computed: {
-    filteredLibraries: function filteredLibraries() {}
+    filteredLibraries: function filteredLibraries() {
+      var _this2 = this;
+
+      var data = this.links;
+      data = data.filter(function (row) {
+        return Object.keys(row).some(function (key) {
+          if (key === 'name') {
+            return String(row[key]).toLowerCase().indexOf(_this2.query.toLowerCase()) > -1;
+          }
+        });
+      }).slice(0, 100);
+      return data;
+    }
   }
 });
 
@@ -55613,7 +55632,47 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _vm.links.length
+      ? _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12" },
+            _vm._l(_vm.filteredLibraries, function(library) {
+              return _c("div", { key: library.id, staticClass: "card mt-3" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("strong", [_vm._v(_vm._s(library.name))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h4", { staticClass: "card-title" }, [
+                    _vm._v(
+                      "\n                         " +
+                        _vm._s(library.link) +
+                        "\n                     "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0, true),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-primary mt-1",
+                      attrs: { href: "#" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                         Go somewhere\n                     "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -55621,30 +55680,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "card mt-3" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n                     Featured\n                   ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h5", { staticClass: "card-title" }, [
-              _vm._v("Special title treatment")
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "With supporting text below as a natural lead-in to additional content."
-              )
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-              _vm._v("Go somewhere")
-            ])
-          ])
-        ])
-      ])
+    return _c("h5", { staticClass: "card-text mt-1" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("Copy")]),
+      _vm._v("   "),
+      _c("a", { attrs: { href: "#" } }, [_vm._v("Copy HTML")])
     ])
   }
 ]
