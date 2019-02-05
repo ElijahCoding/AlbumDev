@@ -30,9 +30,15 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Album', 'prefix' => 'album
 * Info
 */
 Route::group(['prefix' => 'info', 'namespace' => 'Info', 'middleware' => 'auth'], function () {
-
     Route::get('/hacker-news', 'HackerNewsController@index')->name('hackernews.index');
 
     Route::get('/reddit', 'RedditController@index')->name('reddit.index');
 
+});
+
+/**
+* Info
+*/
+Route::group(['prefix' => 'programming', 'namespace' => 'Programming', 'middleware' => 'auth'], function () {
+    Route::get('/cdn', 'CdnController@index')->name('cdn.index');
 });
