@@ -55429,7 +55429,7 @@ var render = function() {
       _vm._l(_vm.pictures, function(picture) {
         return _c(
           "div",
-          { staticClass: "col-md-3 mt-2" },
+          { staticClass: "col-md-4 mt-2" },
           [
             _c(
               "div",
@@ -55455,7 +55455,7 @@ var render = function() {
                 attrs: {
                   name: "picture-" + picture.id,
                   height: "auto",
-                  scrollable: "true",
+                  scrollable: true,
                   adaptive: true
                 }
               },

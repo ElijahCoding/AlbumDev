@@ -12,7 +12,7 @@ class AlbumController extends Controller
     public function index()
     {
         return view('album.index', [
-            'albums' => Album::get()
+            'albums' => Album::orderBy('created_at', 'desc')->get()
         ]);
     }
 

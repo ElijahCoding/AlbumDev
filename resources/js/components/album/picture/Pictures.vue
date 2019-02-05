@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="row">
-            <div class="col-md-3 mt-2" v-for="picture in pictures">
+            <div class="col-md-4 mt-2" v-for="picture in pictures">
                 <div class="card" @click="showModal(picture.id)">
                     <img class="card-img-top"
                          :src="picture.file_path"
@@ -11,7 +11,7 @@
 
                 <modal :name="'picture-' + picture.id"
                         height="auto"
-                        scrollable="true"
+                        :scrollable="true"
                         :adaptive="true"
                        >
                        <div class="card">
