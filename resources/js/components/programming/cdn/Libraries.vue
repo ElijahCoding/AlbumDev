@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="row" v-if="links.length">
+        <div class="row" v-if="libraries.length">
             <div class="col-lg-12">
 
                 <div class="card mt-3" v-for="library in filteredLibraries" :key="library.id">
@@ -38,11 +38,9 @@
 
 <script>
     export default {
-        props: ['libraries'],
-
         data () {
             return {
-                links: [],
+                libraries: [],
                 query: ''
             }
         },
@@ -55,28 +53,26 @@
             getLibraries () {
                 axios.get('/api/libraries')
                      .then(response => {
-                         this.links = response.data
+                         this.libraries = response.data
                      })
             }
         },
 
         computed: {
             filteredLibraries () {
-                let data = this.links
+                let data = this.libraries
 
                 data = data.filter(row => {
                   return Object.keys(row).some(key => {
                       if (key === 'name') {
                           return (
-                            String(row[key])
-                              .toLowerCase()
-                              .indexOf(this.query.toLowerCase()) > -1
+                            String(row[key]).toLowerCase().indexOf(this.query.toLowerCase()) > -1
                           )
                       }
                   })
-              }).slice(0, 100)
+              }).slice(0, 20)
 
-                return data;
+                return data
             }
         }
     }

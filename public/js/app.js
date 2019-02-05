@@ -2084,10 +2084,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['libraries'],
   data: function data() {
     return {
-      links: [],
+      libraries: [],
       query: ''
     };
   },
@@ -2099,7 +2098,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/libraries').then(function (response) {
-        _this.links = response.data;
+        _this.libraries = response.data;
       });
     }
   },
@@ -2107,14 +2106,14 @@ __webpack_require__.r(__webpack_exports__);
     filteredLibraries: function filteredLibraries() {
       var _this2 = this;
 
-      var data = this.links;
+      var data = this.libraries;
       data = data.filter(function (row) {
         return Object.keys(row).some(function (key) {
           if (key === 'name') {
             return String(row[key]).toLowerCase().indexOf(_this2.query.toLowerCase()) > -1;
           }
         });
-      }).slice(0, 100);
+      }).slice(0, 20);
       return data;
     }
   }
@@ -55632,7 +55631,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm.links.length
+    _vm.libraries.length
       ? _c("div", { staticClass: "row" }, [
           _c(
             "div",
