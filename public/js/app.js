@@ -2051,8 +2051,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['libraries'],
-  mounted: function mounted() {
-    console.log(this.libraries);
+  data: function data() {
+    return {
+      links: []
+    };
+  },
+  created: function created() {
+    this.getLibraries();
+  },
+  methods: {
+    getLibraries: function getLibraries() {
+      var _this = this;
+
+      axios.get('/api/libraries').then(function (response) {
+        _this.links = response.data;
+      });
+    }
   }
 });
 
@@ -55541,7 +55555,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("p")
 }
 var staticRenderFns = []
 render._withStripped = true
