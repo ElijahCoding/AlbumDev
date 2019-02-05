@@ -2,7 +2,6 @@
 
 namespace App\Services\HackerNews;
 
-use Cache;
 use App\Services\ServiceAbstract;
 use App\Services\Transformers\HackerNewsTransformer;
 
