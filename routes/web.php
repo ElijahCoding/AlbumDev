@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return redirect()->route('hackernews.index');
+    return redirect()->route('albums.index');
 });
 
 /**
@@ -27,8 +27,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Album', 'prefix' => 'album
 });
 
 /**
-* Authentication
+* Info
 */
 Route::group(['prefix' => 'info', 'namespace' => 'Info', 'middleware' => 'auth'], function () {
+
     Route::get('/hacker-news', 'HackerNewsController@index')->name('hackernews.index');
+
+    Route::get('/reddit', 'RedditController@index')->name('reddit.index');
+
 });
