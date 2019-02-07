@@ -15,12 +15,14 @@ class CreateLibraryDetailsTable extends Migration
     {
         Schema::create('library_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('current_version');
-            $table->text('description');
-            $table->text('repository');
-            $table->text('homepage');
-            $table->text('license');
+            $table->integer('library_id')->unsigned()->index();
+            $table->text('current_version')->nullable();
+            $table->text('description')->nullable();
+            $table->text('repository')->nullable();
+            $table->text('homepage')->nullable();
             $table->timestamps();
+
+            $table->foreign('library_id')->references('id')->on('libraries')->onDelete('cascade');
         });
     }
 

@@ -15,6 +15,19 @@ class FetchLibrariesDetails extends CommandContract
 
     public function handle()
     {
+        $libraries = Library::get();
 
+        foreach ($libraries as $library) {
+            $response = json_decode(
+                $this->client->request('GET', "https://api.cdnjs.com/libraries/{$library->name}")->getBody()
+            );
+
+            $library->library_detail()->create([
+                'current_version' => $response->version,
+                'description' => $response->description,
+                'repository' => !empty($response->repository->url) ? $response->repository->url : null,
+                'homepage' => !empty($response->homepage) ? $response->homepage : null
+            ]);
+        }
     }
 }
