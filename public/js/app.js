@@ -2090,6 +2090,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -55683,34 +55687,47 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
                   _c("h4", { staticClass: "card-title" }, [
-                    _vm._v(
-                      "\n                         " +
-                        _vm._s(library.link) +
-                        "\n                     "
-                    )
+                    _c("span", [
+                      _vm._v(
+                        "\n                             " +
+                          _vm._s(library.link) +
+                          "\n                         "
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("h5", { staticClass: "card-text mt-1" }, [
-                    _c(
-                      "button",
-                      {
-                        directives: [
-                          {
-                            name: "clipboard",
-                            rawName: "v-clipboard",
-                            value: library.link,
-                            expression: "library.link"
-                          }
-                        ],
-                        staticClass: "btn btn-link"
-                      },
-                      [
-                        _vm._v(
-                          "\n                                 Copy\n                         "
-                        )
-                      ]
-                    )
-                  ])
+                  _c(
+                    "button",
+                    {
+                      directives: [
+                        {
+                          name: "clipboard",
+                          rawName: "v-clipboard",
+                          value: library.link,
+                          expression: "library.link"
+                        }
+                      ],
+                      staticClass: "btn btn-warning mt-1"
+                    },
+                    [
+                      _vm._v(
+                        "\n                             Copy\n                     "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-primary mt-1",
+                      attrs: { href: "#" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                         Detail\n                     "
+                      )
+                    ]
+                  )
                 ])
               ])
             }),

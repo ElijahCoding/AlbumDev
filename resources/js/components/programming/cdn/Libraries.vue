@@ -21,20 +21,24 @@
                    </div>
                    <div class="card-body">
                      <h4 class="card-title">
-                         {{ library.link }}
+                         <span>
+                             {{ library.link }}
+                         </span>
                      </h4>
 
-                     <h5 class="card-text mt-1">
-                         <button class="btn btn-link"
-                                 v-clipboard="library.link"
-                                 >
-                                 Copy
-                         </button>
-                     </h5>
+                     <!-- <h5 class="card-text mt-1">
 
-                     <!-- <a href="#" class="btn btn-primary mt-1">
-                         Go somewhere
-                     </a> -->
+                     </h5> -->
+
+                     <button class="btn btn-warning mt-1"
+                             v-clipboard="library.link"
+                             >
+                             Copy
+                     </button>
+
+                     <a href="#" class="btn btn-primary m-1">
+                         Detail
+                     </a>
                    </div>
                </div>
 
