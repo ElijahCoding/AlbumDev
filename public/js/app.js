@@ -2083,6 +2083,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2100,21 +2105,37 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/libraries').then(function (response) {
         _this.libraries = response.data;
       });
-    }
+    } // search () {
+    //     axios.get('/programming/cdn/search', {
+    //         params: {
+    //             'query': this.query
+    //         }
+    //     }).then(response => {
+    //         console.log(response.data);
+    //     })
+    // }
+
   },
   computed: {
     filteredLibraries: function filteredLibraries() {
       var _this2 = this;
 
-      var data = this.libraries;
-      data = data.filter(function (row) {
+      var data = [];
+      this.libraries.forEach(function (item) {
+        if (item.name.toLowerCase() === _this2.query.toLowerCase()) {
+          data.push(item);
+        }
+      });
+      data = data.concat(this.libraries.filter(function (row) {
         return Object.keys(row).some(function (key) {
           if (key === 'name') {
             return String(row[key]).toLowerCase().indexOf(_this2.query.toLowerCase()) > -1;
           }
         });
-      }).slice(0, 20);
-      return data;
+      }).slice(0, 20));
+      return _.uniqBy(data, function (e) {
+        return e.name;
+      });
     }
   }
 });
@@ -55605,31 +55626,46 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.query,
-              expression: "query"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "search", placeholder: "Search" },
-          domProps: { value: _vm.query },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.query = $event.target.value
-            }
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.search($event)
           }
-        })
-      ])
-    ]),
+        }
+      },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-10" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.query,
+                  expression: "query"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "search", placeholder: "Search" },
+              domProps: { value: _vm.query },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.query = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ]
+    ),
     _vm._v(" "),
     _vm.libraries.length
       ? _c("div", { staticClass: "row" }, [
@@ -55651,7 +55687,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(0, true),
+                  _vm._m(1, true),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -55675,6 +55711,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2" }, [
+      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Search")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

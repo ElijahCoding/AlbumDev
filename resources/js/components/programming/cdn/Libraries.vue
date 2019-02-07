@@ -1,14 +1,19 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <input type="search"
-                       class="form-control"
-                       placeholder="Search"
-                       v-model="query"
-                       >
+        <form @submit.prevent="search">
+            <div class="row">
+                <div class="col-lg-10">
+                    <input type="search"
+                           class="form-control"
+                           placeholder="Search"
+                           v-model="query"
+                           >
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn btn-primary">Search</button>
+                </div>
             </div>
-        </div>
+        </form>
 
         <div class="row" v-if="libraries.length">
             <div class="col-lg-12">
@@ -56,23 +61,42 @@
                          this.libraries = response.data
                      })
             }
+            // search () {
+            //     axios.get('/programming/cdn/search', {
+            //         params: {
+            //             'query': this.query
+            //         }
+            //     }).then(response => {
+            //         console.log(response.data);
+            //     })
+            // }
         },
 
         computed: {
             filteredLibraries () {
-                let data = this.libraries
+                let data = []
 
-                data = data.filter(row => {
-                  return Object.keys(row).some(key => {
-                      if (key === 'name') {
-                          return (
-                            String(row[key]).toLowerCase().indexOf(this.query.toLowerCase()) > -1
-                          )
-                      }
-                  })
-              }).slice(0, 20)
+                this.libraries.forEach(item => {
+                    if (item.name.toLowerCase() === this.query.toLowerCase()) {
+                        data.push(item)
+                    }
+                })
 
-                return data
+                data = data.concat(
+                    this.libraries.filter(row => {
+                      return Object.keys(row).some(key => {
+                          if (key === 'name') {
+                              return (
+                                String(row[key]).toLowerCase().indexOf(this.query.toLowerCase()) > -1
+                              )
+                          }
+                      })
+                  }).slice(0, 20)
+                )
+
+                return _.uniqBy(data, (e) => {
+                    return e.name
+                })
             }
         }
     }
