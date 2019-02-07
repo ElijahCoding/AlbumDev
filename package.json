@@ -20,12 +20,12 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.17.0",
         "sass-loader": "^7.1.0",
-        "vue": "^2.6.2",
+        "vue": "^2.6.3",
         "vue-template-compiler": "^2.6.2"
     },
     "dependencies": {
-        "clipboard": "^2.0.4",
         "moment": "^2.24.0",
+        "v-clipboard": "^2.2.1",
         "vue-gallery": "^1.5.0",
         "vue-js-modal": "^1.3.28",
         "vue-notification": "^1.3.15",

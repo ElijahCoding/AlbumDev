@@ -2,15 +2,12 @@
     <div class="container">
         <form @submit.prevent="search">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <input type="search"
                            class="form-control"
                            placeholder="Search"
                            v-model="query"
                            >
-                </div>
-                <div class="col-lg-2">
-                    <button class="btn btn-primary">Search</button>
                 </div>
             </div>
         </form>
@@ -26,13 +23,18 @@
                      <h4 class="card-title">
                          {{ library.link }}
                      </h4>
+
                      <h5 class="card-text mt-1">
-                         <a href="#">Copy</a> &nbsp; <a href="#">Copy HTML</a>
+                         <button class="btn btn-link"
+                                 v-clipboard="library.link"
+                                 >
+                                 Copy
+                         </button>
                      </h5>
 
-                     <a href="#" class="btn btn-primary mt-1">
+                     <!-- <a href="#" class="btn btn-primary mt-1">
                          Go somewhere
-                     </a>
+                     </a> -->
                    </div>
                </div>
 
@@ -61,15 +63,6 @@
                          this.libraries = response.data
                      })
             }
-            // search () {
-            //     axios.get('/programming/cdn/search', {
-            //         params: {
-            //             'query': this.query
-            //         }
-            //     }).then(response => {
-            //         console.log(response.data);
-            //     })
-            // }
         },
 
         computed: {
