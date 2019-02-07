@@ -55719,7 +55719,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn btn-primary mt-1",
+                      staticClass: "btn btn-primary mt-1 pull-right",
                       attrs: { href: "#" }
                     },
                     [

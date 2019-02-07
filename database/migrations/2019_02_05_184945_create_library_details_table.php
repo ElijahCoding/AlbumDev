@@ -15,6 +15,11 @@ class CreateLibraryDetailsTable extends Migration
     {
         Schema::create('library_details', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('current_version');
+            $table->text('description');
+            $table->text('repository');
+            $table->text('homepage');
+            $table->text('license');
             $table->timestamps();
         });
     }

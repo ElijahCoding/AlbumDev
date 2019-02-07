@@ -3,23 +3,14 @@
 namespace App\Console\Commands;
 
 use GuzzleHttp\Client;
-use Illuminate\Console\Command;
 use App\Models\Programming\Cdn\Library;
+use App\Console\Commands\CommandContract;
 
-class FetchLibraries extends Command
+class FetchLibraries extends CommandContract
 {
     protected $signature = 'get:libraries';
 
     protected $description = 'Get all libraries from https://cdnjs.com';
-
-    protected $client;
-
-    public function __construct(Client $client)
-    {
-        parent::__construct();
-
-        $this->client = $client;
-    }
 
     public function handle()
     {

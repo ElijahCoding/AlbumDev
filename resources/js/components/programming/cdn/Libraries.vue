@@ -35,10 +35,10 @@
                              >
                              Copy
                      </button>
-
-                     <a href="#" class="btn btn-primary m-1">
+                     <a href="#" class="btn btn-primary mt-1 pull-right">
                          Detail
                      </a>
+                     
                    </div>
                </div>
 
