@@ -9,6 +9,8 @@ class Library extends Model
 {
     protected $guarded = [];
 
+    protected $with = ['library_detail'];
+
     public function library_detail()
     {
         return $this->hasOne(LibraryDetail::class);

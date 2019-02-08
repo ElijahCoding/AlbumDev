@@ -4,6 +4,10 @@
 
 <script>
     export default {
-        
+        props: ['library'],
+
+        created () {
+            
+        }
     }
 </script>

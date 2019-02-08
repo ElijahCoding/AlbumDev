@@ -12,4 +12,10 @@ class CdnController extends Controller
     {
         return view('programming.cdn.index');
     }
+
+    public function show(Library $library)
+    {
+
+        return view('programming.cdn.show', compact('library'));
+    }
 }
