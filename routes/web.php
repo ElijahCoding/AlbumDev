@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return redirect()->route('albums.index');
+    return redirect()->route('login');
 });
 
 /**
@@ -37,9 +37,11 @@ Route::group(['prefix' => 'info', 'namespace' => 'Info', 'middleware' => 'auth']
 });
 
 /**
-* Info
+* Programming
 */
 Route::group(['prefix' => 'programming', 'namespace' => 'Programming', 'middleware' => 'auth'], function () {
     Route::get('/cdn', 'CdnController@index')->name('cdn.index');
     Route::get('/cdn/libraries/{library}', 'CdnController@show');
 });
+
+Route::get('/test/github', 'Github\GithubController@index');
