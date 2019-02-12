@@ -2081,15 +2081,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['library'],
-  data: function data() {
-    return {
-      moment: moment
-    };
-  },
-  created: function created() {
-    console.log(this.library);
-  }
+  props: ['library']
 });
 
 /***/ }),

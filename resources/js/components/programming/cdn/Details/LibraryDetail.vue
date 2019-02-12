@@ -35,16 +35,6 @@
 
 <script>
     export default {
-        props: ['library'],
-
-        data () {
-            return {
-                moment
-            }
-        },
-
-        created () {
-            console.log(this.library);
-        }
+        props: ['library']
     }
 </script>
