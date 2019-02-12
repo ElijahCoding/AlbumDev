@@ -42,6 +42,8 @@ Route::group(['prefix' => 'info', 'namespace' => 'Info', 'middleware' => 'auth']
 Route::group(['prefix' => 'programming', 'namespace' => 'Programming', 'middleware' => 'auth'], function () {
     Route::get('/cdn', 'CdnController@index')->name('cdn.index');
     Route::get('/cdn/libraries/{library}', 'CdnController@show');
+
+    Route::get('/github/repositories', 'GithubController@index')->name('github.index');
 });
 
 Route::get('/test/github', 'Github\GithubController@index');

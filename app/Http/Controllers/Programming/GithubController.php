@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Github;
+namespace App\Http\Controllers\Programming;
 
 use Cache;
 use GuzzleHttp\Client;
@@ -23,10 +23,8 @@ class GithubController extends Controller
             return json_encode((new GetRepositories($this->client))->get());
         });
 
-        dd(json_decode($repositories));
-        foreach (json_decode($repositories) as $repository) {
-            dump($repository->full_name);
-        }
-        // return json_decode($repositories);
+        return view('programming.github.index', [
+            'repositories' => json_decode($repositories)
+        ]);
     }
 }
