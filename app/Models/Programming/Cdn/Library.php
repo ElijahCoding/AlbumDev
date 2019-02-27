@@ -2,19 +2,14 @@
 
 namespace App\Models\Programming\Cdn;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Programming\Cdn\LibraryDetail;
 
 class Library extends Model
 {
+    use Searchable;
+    
     protected $guarded = [];
-
-    protected $with = ['library_detail'];
-
-    public function library_detail()
-    {
-        return $this->hasOne(LibraryDetail::class);
-    }
 
     public function getRouteKeyName()
     {
