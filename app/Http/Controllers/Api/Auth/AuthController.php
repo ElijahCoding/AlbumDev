@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
-    public function register()
+    public function register(Request $request)
     {
         $user = User::create([
              'email'    => $request->email,
