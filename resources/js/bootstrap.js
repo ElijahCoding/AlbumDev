@@ -4,12 +4,7 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
+    require('bootstrap')
 } catch (e) {}
 
-window.axios = require('axios');
-
-window.axios.defaults.headers.common = {
-    'X-CSRF-TOKEN': window.App.csrfToken,
-    'X-Requested-With': 'XMLHttpRequest'
-};
+window.axios = require('axios')
