@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.2"
     },
     "dependencies": {
+        "@websanova/vue-auth": "^2.21.14-beta",
         "moment": "^2.24.0",
         "v-clipboard": "^2.2.1",
         "vue-gallery": "^1.5.0",

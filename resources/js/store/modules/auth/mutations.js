@@ -10,4 +10,5 @@ export const loginUser = (state, payload) => {
 export const logoutUser = (state) => {
     state.isLoggedIn = false
     localStorage.clear()
+    router.push({ name: 'login' })
 }

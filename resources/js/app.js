@@ -6,10 +6,12 @@ import 'vuetify/dist/vuetify.min.css'
 
 require('./plugins')
 
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
-window.moment = require('moment');
+window.Vue = require('vue')
+window.moment = require('moment')
+
+require('./middleware')
 
 const app = new Vue({
     el: '#app',
