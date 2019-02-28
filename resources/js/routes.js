@@ -1,16 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import App from '@/components/layouts/App'
-import Libraries from '@/components/programming/cdn/Libraries'
 
 export const routes = [
     {
+        path: '/login',
+        name: 'login',
+        component: require('@/components/auth/login').default
+    },
+
+    {
         path: '/',
-        component: App,
+        component: require('@/components/layouts/App').default,
         children: [
             {
                 path: 'programming',
-                component: Libraries
+                component: require('@/components/programming/cdn/Libraries').default
             }
         ]
     },
