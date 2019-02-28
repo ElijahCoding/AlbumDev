@@ -4,6 +4,9 @@ import Vuetify from 'vuetify'
 
 import { routes } from './routes'
 
+import 'vuetify/dist/vuetify.min.css'
+
+Vue.use(Vuetify)
 Vue.use(VueRouter)
 
 require('./bootstrap');

@@ -1,17 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/components/Home'
-import Test from '@/components/Test'
+import App from '@/components/programming/layouts/app'
+import Libraries from '@/components/programming/cdn/Libraries'
 
 export const routes = [
     {
-        path: '/home',
-        name: 'home',
-        component: Home
+        path: '/programming',
+        component: App,
+        children: [
+            {
+                path: 'cdn',
+                component: Libraries
+            }
+        ]
     },
-    {
-        path: '/test',
-        name: 'test',
-        component: Test
-    }
+    // {
+    //     path: '/test',
+    //     name: 'test',
+    //     component: Test
+    // }
 ]

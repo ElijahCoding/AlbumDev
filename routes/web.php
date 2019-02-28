@@ -1,9 +1,9 @@
 <?php
 
-// Route::get('/{any?}', function () {
-//  return view('index');
-// })->where('any', '[\/\w\.-]*');
-//
+Route::get('/{any?}', function () {
+ return view('index');
+})->where('any', '[\/\w\.-]*');
+
 
 /**
 * Authentication
