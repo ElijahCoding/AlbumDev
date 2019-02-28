@@ -11,4 +11,5 @@ Route::group(['namespace' => 'Api'], function () {
 
         Route::post('/logout', 'AuthController@logout');
     });
+
 });
