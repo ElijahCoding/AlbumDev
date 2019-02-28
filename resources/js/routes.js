@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import App from '@/components/programming/layouts/app'
+import App from '@/components/layouts/App'
 import Libraries from '@/components/programming/cdn/Libraries'
 
 export const routes = [
     {
-        path: '/programming',
+        path: '/',
         component: App,
         children: [
             {
-                path: 'cdn',
+                path: 'programming',
                 component: Libraries
             }
         ]
@@ -20,3 +20,8 @@ export const routes = [
     //     component: Test
     // }
 ]
+
+export default new VueRouter({
+    mode: 'history',
+    routes
+});

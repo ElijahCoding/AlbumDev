@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <!-- <div class="container">
         <form @submit.prevent="search">
             <div class="row">
                 <div class="col-lg-12">
@@ -22,7 +22,7 @@
     </div>
 
 
-</div>
+</div> -->
 </template>
 
 <script>

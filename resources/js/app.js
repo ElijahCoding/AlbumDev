@@ -1,26 +1,15 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Vuetify from 'vuetify'
-
-import { routes } from './routes'
+import router from './routes'
 
 import 'vuetify/dist/vuetify.min.css'
 
-Vue.use(Vuetify)
-Vue.use(VueRouter)
+require('./plugins')
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 window.moment = require('moment');
 
-// require('./plugins.js')
-// require('./components.js')
-
-const router = new VueRouter({
-    mode: 'history',
-    routes
-});
 
 const app = new Vue({
     el: '#app',
