@@ -1,7 +1,4 @@
 <?php
-//
-// Route::get('/libraries', 'Programming\Api\CdnController@index');
-//
 
 Route::group(['namespace' => 'Api'], function () {
     /*
