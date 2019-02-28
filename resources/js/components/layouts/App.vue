@@ -11,7 +11,7 @@
                         slot="activator"
                         light
                       >
-                        Dropdown
+                        Programming
                       </v-btn>
                       <v-list>
                         <v-list-tile
