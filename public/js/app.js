@@ -97464,11 +97464,11 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
-var login = function login(_ref, crendentials) {
+var login = function login(_ref, credentials) {
   var commit = _ref.commit;
   axios.post('/api/login', {
-    'email': crendentials.email,
-    'password': crendentials.password
+    'email': credentials.email,
+    'password': credentials.password
   }).then(function (response) {
     // localStorage.setItem('token', response.data.access_token)
     // window.axios.defaults.headers.common.Authorization = `Bearer ${response.data.access_token}`

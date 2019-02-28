@@ -1,7 +1,7 @@
-export const login = ({ commit }, crendentials) => {
+export const login = ({ commit }, credentials) => {
     axios.post('/api/login', {
-        'email': crendentials.email,
-        'password': crendentials.password
+        'email': credentials.email,
+        'password': credentials.password
     }).then(response => {
         // localStorage.setItem('token', response.data.access_token)
         // window.axios.defaults.headers.common.Authorization = `Bearer ${response.data.access_token}`
