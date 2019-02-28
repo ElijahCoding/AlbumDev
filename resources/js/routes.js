@@ -9,11 +9,13 @@ export const routes = [
     },
 
     {
-        path: '/',
+        path: '/programming',
         component: require('@/components/layouts/App').default,
+        meta: { requiresAuth: true },
         children: [
             {
-                path: 'programming',
+                path: 'cdn',
+                name: 'cdn',
                 component: require('@/components/programming/cdn/Libraries').default
             }
         ]
