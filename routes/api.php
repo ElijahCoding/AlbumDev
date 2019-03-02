@@ -12,4 +12,10 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('/logout', 'AuthController@logout');
     });
 
+    Route::group(['middleware' => 'jwt.verify'], function () {
+        Route::group(['prefix' => 'libraries'], function () {
+            Route::get('/', 'Libraries\LibrariesController@index');
+        });
+    });
+
 });
