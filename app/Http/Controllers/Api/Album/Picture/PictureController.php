@@ -16,7 +16,7 @@ class PictureController extends Controller
         if ($request->hasFile('uploadedFile')) {
             if (in_array($request->file('uploadedFile')->getClientOriginalExtension(), $this->allowedImageExtensions)) {
                 Storage::putFileAs(
-                    "/public/{$album->title}/",
+                    "/public/",
                     $request->file('uploadedFile'),
                     $fileName = $request->file('uploadedFile')->getClientOriginalName()
                 );
