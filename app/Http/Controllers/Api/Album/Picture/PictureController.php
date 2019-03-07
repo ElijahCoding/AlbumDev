@@ -14,17 +14,20 @@ class PictureController extends Controller
     public function store(Album $album, Request $request)
     {
         if ($request->hasFile('uploadedFile')) {
-            if (in_array($request->file('uploadedFile')->getClientOriginalExtension(), $this->allowedImageExtensions)) {
-                Storage::putFileAs(
-                    "/public/{$album->title}/",
-                    $request->file('uploadedFile'),
-                    $fileName = $request->file('uploadedFile')->getClientOriginalName()
-                );
-                return $album->pictures()->create([
-                    'name' => $fileName,
-                    'file_path' => "/storage/{$album->title}/$fileName"
-                ]);
+            foreach ($request->file('uploadedFile') as $file) {
+                if (in_array($file->getClientOriginalExtension(), $this->allowedImageExtensions)) {
+                    Storage::putFileAs(
+                        "/public/{$album->title}/",
+                        $file,
+                        $fileName = $file->getClientOriginalName()
+                    );
+                    $album->pictures()->create([
+                        'name' => $fileName,
+                        'file_path' => "/storage/{$album->title}/$fileName"
+                    ]);
+                }
             }
+
         }
     }
 }
