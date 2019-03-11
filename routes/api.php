@@ -2,7 +2,7 @@
 
 Route::group(['namespace' => 'Api'], function () {
     /*
-    // Auth
+    / Auth
     */
     Route::group(['namespace' => 'Auth'], function () {
         Route::post('/register', 'AuthController@register');
@@ -14,7 +14,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::group(['middleware' => 'jwt.verify'], function () {
         /*
-        // Albums
+        / Albums
         */
         Route::group(['prefix' => 'album', 'namespace' => 'Album'], function () {
             Route::get('/', 'AlbumController@index');
@@ -25,6 +25,13 @@ Route::group(['namespace' => 'Api'], function () {
                 Route::get('/picture', 'PictureController@index');
                 Route::post('/picture/store', 'PictureController@store');
             });
+        });
+
+        /*
+        / Albums
+        */
+        Route::group(['prefix' => 'drive', 'namespace' => 'GoogleDrive'], function () {
+            Route::get('/', 'DriveController@index');
         });
     });
 
