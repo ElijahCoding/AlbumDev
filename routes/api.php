@@ -26,6 +26,13 @@ Route::group(['namespace' => 'Api'], function () {
                 Route::post('/picture/store', 'PictureController@store');
             });
         });
+
+        /*
+        / Telegram
+        */
+        Route::group(['prefix' => 'telegram', 'namespace' => 'Telegram'], function () {
+            Route::get('/test', 'TestController@index');
+        });
     });
 
 });

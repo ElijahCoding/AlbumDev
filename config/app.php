@@ -225,7 +225,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Telegram'  => Telegram\Bot\Laravel\Facades\Telegram::class
 
     ],
 
