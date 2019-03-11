@@ -26,13 +26,6 @@ Route::group(['namespace' => 'Api'], function () {
                 Route::post('/picture/store', 'PictureController@store');
             });
         });
-
-        /*
-        / Albums
-        */
-        Route::group(['prefix' => 'drive', 'namespace' => 'GoogleDrive'], function () {
-            Route::get('/', 'DriveController@index');
-        });
     });
 
 });
